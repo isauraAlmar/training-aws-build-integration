@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
       runtime-versions:
-        dotnet: dotnetcore3.0
+        dotnet: 3.0
       commands:
       - echo "Starting installs . . ."
       - sudo apt-get update -y
