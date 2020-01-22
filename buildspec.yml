@@ -2,7 +2,6 @@ version: 0.2
 
 phases:
   install:
-      runtime-versions:
       commands:
       - echo "Starting installs . . ."
       - sudo apt-get update -y
