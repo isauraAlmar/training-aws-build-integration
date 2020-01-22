@@ -3,11 +3,12 @@ version: 0.2
 phases:
   install:
     install:
-    commands:
+      runtime-versions:
+      commands:
       - echo "Starting installs . . ."
       # AWS CodePipeline does not support submodules, so:
       - mkdir -p ~/.ssh                   # Ensure the .ssh directory exists
-      - mv $CODEBUILD_SRC_DIR/lib/ssh/ssh_key ~/.ssh/ssh_key  # Save the machine user's private key
+      #- mv $CODEBUILD_SRC_DIR/lib/ssh/ssh_key ~/.ssh/ssh_key  # Save the machine user's private key
       - chmod 600 ~/.ssh/ssh_key          # Adjust the private key permissions (avoids a critical error)
       - eval "$(ssh-agent -s)"            # Initialize the ssh agent
       - ssh-add ~/.ssh/ssh_key            # Add the machine user's key to the ssh "keychain"
@@ -29,5 +30,3 @@ phases:
   build:
     commands:
       - echo "Starting builds . . ."
-
-  
