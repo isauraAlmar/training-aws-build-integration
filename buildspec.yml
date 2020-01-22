@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
       runtime-versions:
-        CoreCLR: 3.2.6-beta
+        node.js: 10
       commands:
       - echo "Starting installs . . ."
       - sudo apt-get update -y
