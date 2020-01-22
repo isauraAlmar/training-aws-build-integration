@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
       runtime-versions:
-        dotnet: 2.1.502
+        CoreCLR: 3.2.6-beta
       commands:
       - echo "Starting installs . . ."
       - sudo apt-get update -y
