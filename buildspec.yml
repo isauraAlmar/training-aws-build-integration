@@ -30,8 +30,4 @@ phases:
     commands:
       - echo "Starting builds . . ."
 
-  post_build:
-      - echo "Starting post . . ."
-  artifacts:
-    files:
-      - "**/*"
+  
