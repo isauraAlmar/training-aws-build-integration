@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    install:
+    commands:
+      - echo "Starting installs . . ."
+      # AWS CodePipeline does not support submodules, so:
+      - mkdir -p ~/.ssh                   # Ensure the .ssh directory exists
+      - mv $CODEBUILD_SRC_DIR/lib/ssh/ssh_key ~/.ssh/ssh_key  # Save the machine user's private key
+      - chmod 600 ~/.ssh/ssh_key          # Adjust the private key permissions (avoids a critical error)
+      - eval "$(ssh-agent -s)"            # Initialize the ssh agent
+      - ssh-add ~/.ssh/ssh_key            # Add the machine user's key to the ssh "keychain"
+      - echo "clonning repo"
+      - git clone git@github.com:isauraAlmar/training-aws-build-integration.git
+      # apt-get updates
+      - pip install --upgrade pip
+      - sudo add-apt-repository universe
+      - sudo apt-get update -y
+      - sudo apt-get install -y apt-transport-https
+      - dotnet --version
+      # install awscli  
+      - pip install awscli --upgrade --user
+      # install Cloudformation4dotNET tool
+      #NOT NEED# - dotnet tool install NachoColl.Cloudformation4dotNET --version 1.0.* --tool-path $CODEBUILD_SRC_DIR/tools
+      # install Reportgenerator tool
+      - dotnet tool install dotnet-reportgenerator-globaltool --version 4.3.6 --tool-path $CODEBUILD_SRC_DIR/tools
+      
+  build:
+    commands:
+      - echo "Starting builds . . ."
+
+  post_build:
+      - echo "Starting post . . ."
+  artifacts:
+    files:
+      - "**/*"
