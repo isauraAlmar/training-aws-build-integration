@@ -25,7 +25,7 @@ phases:
       # install Cloudformation4dotNET tool
       #NOT NEED# - dotnet tool install NachoColl.Cloudformation4dotNET --version 1.0.* --tool-path $CODEBUILD_SRC_DIR/tools
       # install Reportgenerator tool
-      - dotnet tool install dotnet-reportgenerator-globaltool --version 4.3.6 --tool-path $CODEBUILD_SRC_DIR/tools
+      #- dotnet tool install dotnet-reportgenerator-globaltool --version 4.3.6 --tool-path $CODEBUILD_SRC_DIR/tools
       
   build:
     commands:
