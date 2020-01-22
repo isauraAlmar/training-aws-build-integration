@@ -6,13 +6,17 @@ phases:
         dotnet: 3.0
       commands:
       - echo "Starting installs . . ."
+      # Install pip
+      - sudo apt-get install python-pip
       - sudo apt-get update -y
+      - npm install
+      # Upgrade AWS CLI to the latest version
+      - pip install --upgrade awscli
       - pip install --upgrade pip
       # install awscli
       - pip install awscli --upgrade --user
       # mysql client
       - sudo apt-get install mysql-client -y
-      - dotnet tool install dotnet-reportgenerator-globaltool --version 4.3.6
   build:
     commands:
       - echo "Starting builds . . ."
