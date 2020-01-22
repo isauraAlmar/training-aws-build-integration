@@ -10,7 +10,7 @@ phases:
       - pip install awscli --upgrade --user
       # mysql client
       - sudo apt-get install mysql-client -y
-      
+      - dotnet tool install dotnet-reportgenerator-globaltool --version 4.3.6
   build:
     commands:
       - echo "Starting builds . . ."
