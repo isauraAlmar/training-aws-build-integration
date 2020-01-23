@@ -6,7 +6,7 @@ phases:
         dotnet: 3.0
       commands:
       - echo "Starting installs . . ."
-      - sudo yum update -y
+      - sudo apt-get install update -y
       - sudo apt-get install python-pip
       - pip install --upgrade pip
       # install awscli
